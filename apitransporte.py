@@ -1,3 +1,4 @@
+#Comentario en línea 1 para ejemplo de exposición
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from database import get_db_connection
@@ -7,7 +8,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # O especificá tu origen: ["http://192.168.1.70"]
+    allow_origins=["*"],  # O origen: ["http://192.168.1.70"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -18,7 +19,7 @@ app.add_middleware(
 async def consultatransportista():
     try:
         conn = get_db_connection()
-        cursor = conn.cursor()  # ❌ No usar dictionary=True aquí
+        cursor = conn.cursor()  # No usar dictionary=True aquí
 
         query = f"SELECT Nombre, Telefono, Direccion, TipoVehiculo FROM Transportistas"
         cursor.execute(query)
